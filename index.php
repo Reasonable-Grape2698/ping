@@ -17,57 +17,42 @@
   <body>
 
     <div class="container">
-
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
-        <h3 class="text-muted">BRAMKI VOIP</h3>
+        <h3 class="text-muted">Looking Glass Multiping Test</h3>
       </div>
 
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-lg-4">
-          <h3>BRAMKA - 192.168.1.90</h3>
-          <p class="text-danger">BIURO HURTOWE I DETAL</p>
-
-         <div class="status"> STATUS:  <span id="a" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+          <h3>google.com</h3>
+         <div class="status"> STATUS:  <span id="a" class="btn btn-warning">Testing</span> </div>
         </div>
         <div class="col-lg-4">
-          <h3>BRAMKA - 192.168.1.91</h3>
-          <p class="text-danger">BIURO KADRY I KSIĘGOWOŚĆ</p>
-
-         <div class="status"> STATUS:  <span id="b" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+          <h3>192.168.1.91</h3>
+         <div class="status"> STATUS:  <span id="b" class="btn btn-warning">Testing</span> </div>
        </div>
         <div class="col-lg-4">
           <h3>BRAMKA - 192.168.1.92</h3>
-          <p class="text-danger">BIURO HURTOWE</p>
-   
-         <div class="status"> STATUS:  <span id="c" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+         <div class="status"> STATUS:  <span id="c" class="btn btn-warning">Testing</span> </div>
        </div>
         <div class="col-lg-4">
           <h3>BRAMKA - 192.168.1.93</h3>
-          <p class="text-danger">BIURO UP</p>
- 
-         <div class="status"> STATUS:  <span id="d" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+         <div class="status"> STATUS:  <span id="d" class="btn btn-warning">Testing</span> </div>
         </div>
         <div class="col-lg-4">
           <h3>BRAMKA - 192.168.1.94</h3>
-          <p class="text-danger">BIURO UP</p>
-
-         <div class="status"> STATUS:  <span id="e" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+         <div class="status"> STATUS:  <span id="e" class="btn btn-warning">Testing</span> </div>
        </div>
         <div class="col-lg-4">
           <h3>BRAMKA - 192.168.1.95</h3>
-          <p class="text-danger">MAGAZYN</p>
-   
-         <div class="status"> STATUS:  <span id="f" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+         <div class="status"> STATUS:  <span id="f" class="btn btn-warning">Testing</span> </div>
        </div>
         <div class="col-lg-4">
           <h3>BRAMKA - 192.168.1.96</h3>
-          <p class="text-danger">MAGAZYN</p>
-     
-         <div class="status"> STATUS:  <span id="g" class="btn btn-warning">SPRAWDZANIE/CHECKING</span> </div>
+         <div class="status"> STATUS:  <span id="g" class="btn btn-warning">Testing</span> </div>
        </div>  
       </div>
 
@@ -92,15 +77,13 @@ function checkIsOnline(target, elemToShow){
         type: "post",
         data: {ip: target},
         success: function (response) {
-
-          if(response == 'ok'){
+          if(response == 'FAIL'){
+            $("#"+elemToShow).addClass('btn-danger');
+            $("#"+elemToShow).text("PING TIMEOUT");  
+         } else {
             $("#"+elemToShow).removeClass('btn-danger btn-warning');
             $("#"+elemToShow).addClass('btn-success');
-            $("#"+elemToShow).text("PING OK");
-              }else{
-                $("#"+elemToShow).addClass('btn-danger');
-                $("#"+elemToShow).text("PING TIMEOUT");  
-                   }
+            $("#"+elemToShow).text(response);
         },
         error: function(jqXHR, textStatus, errorThrown) {
            alert(textStatus, errorThrown);
@@ -112,7 +95,7 @@ function checkIsOnline(target, elemToShow){
 
 
 setInterval(function(){
-checkIsOnline('192.168.1.90','a');
+checkIsOnline('google.com','a');
 checkIsOnline('192.168.1.91','b');
 checkIsOnline('192.168.1.92','c');
 checkIsOnline('192.168.1.93','d');
