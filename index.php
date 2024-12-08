@@ -77,15 +77,17 @@ function checkIsOnline(target, elemToShow){
         type: "post",
         data: {ip: target},
         success: function (response) {
+
           if(response == 'FAIL'){
             $("#"+elemToShow).addClass('btn-danger');
             $("#"+elemToShow).text("PING TIMEOUT");  
-         } else {
+          }
+          else{
             $("#"+elemToShow).removeClass('btn-danger btn-warning');
             $("#"+elemToShow).addClass('btn-success');
-            $("#"+elemToShow).text(response);
+            $("#"+elemToShow).text(response);  
+          }
         },
-       }
         error: function(jqXHR, textStatus, errorThrown) {
            alert(textStatus, errorThrown);
         }
@@ -93,7 +95,6 @@ function checkIsOnline(target, elemToShow){
 
     });
 }
-
 
 setInterval(function(){
 checkIsOnline('google.com','a');
