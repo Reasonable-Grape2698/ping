@@ -85,6 +85,7 @@ function checkIsOnline(target, elemToShow){
             $("#"+elemToShow).addClass('btn-success');
             $("#"+elemToShow).text(response);
         },
+       }
         error: function(jqXHR, textStatus, errorThrown) {
            alert(textStatus, errorThrown);
         }
