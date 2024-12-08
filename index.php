@@ -85,7 +85,7 @@ function checkIsOnline(target, elemToShow){
           else{
             $("#"+elemToShow).removeClass('btn-danger btn-warning');
             $("#"+elemToShow).addClass('btn-success');
-            $("#"+elemToShow).text = response;  
+            $("#"+elemToShow).innerHTML = response;  
           }
         },
         error: function(jqXHR, textStatus, errorThrown) {
