@@ -1,15 +1,7 @@
 <?php
 if(isset($_POST['ip'])){
 $host = $_POST['ip'];
-$port = 80; 
-$waitTimeoutInSeconds = 1; 
-
-if($fp = fsockopen($host,$port,$errCode,$errStr,$waitTimeoutInSeconds)){   
-  echo "ok";
-} else {
-  echo "ko";
-} 
-fclose($fp);
-
+$pingtime = shell_exec('ping -qc1 google.com 2>&1 | awk -F'/' 'END{ print (/^rtt/? $5" ms":"FAIL") }'');
+echo $pingtime
 }
 ?>
